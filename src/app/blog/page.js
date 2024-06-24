@@ -1,8 +1,7 @@
-import client from "@/lib/apolloClient";
+import client from "@/lib/apolloClient"
 import { gql } from "@apollo/client";
 import Head from "next/head";
 import Link from "next/link";
-
 const GET_BLOG_POSTS = gql`
   query GetBlogPosts {
     posts(first: 10) {
@@ -15,13 +14,12 @@ const GET_BLOG_POSTS = gql`
     }
   }
 `;
-export default async function Home() {
+const Blog = async () => {
   const { data } = await client.query({
     query: GET_BLOG_POSTS,
   });
 
   const posts = data.posts.nodes;
-
   return (
     <div>
       <Head>
@@ -42,6 +40,8 @@ export default async function Home() {
         ))}
       </ul>
     </div>
-  );
+  )
 }
 
+export default Blog
+//export const revalidate = 10;
