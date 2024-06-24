@@ -44,4 +44,4 @@ const Blog = async () => {
 }
 
 export default Blog
-//export const revalidate = 10;
+export const revalidate = 10;
